@@ -36,30 +36,20 @@
             if (input.value.trim() !== '') {
               const response = await fetch(`${API_URL}/todos`, {
                 method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json', },
                 body: JSON.stringify({ content: input.value }),
               });
-              if (response.ok) {
-                input.value = '';
-                fetchTodos();
-              }
-            }
-          }
+              if (response.ok) { input.value = ''; fetchTodos(); }
+          }}
 
           async function deleteItem(id) {
             const response = await fetch(`${API_URL}/todos/${id}`, {
               method: 'DELETE',
             });
-            if (response.ok) {
-              fetchTodos();
-            }
+            if (response.ok) { fetchTodos(); }
           }
 
           fetchTodos();
-
         </script>
-
     </body>
 </html>
